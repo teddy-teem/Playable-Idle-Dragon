@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="utf-8"/>
+	
+    <title>Idle Dragon</title>
+
+    <meta name="ad.size" content="width=300,height=250"/>    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!--https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html-->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="format-detection" content="telephone=no"/>
+
+    <!-- force webkit on 360 -->
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <!-- force edge on IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="msapplication-tap-highlight" content="no"/>
+
+    <!-- force full screen on some browser -->
+    <meta name="full-screen" content="yes"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="360-fullscreen" content="true"/>
+
+    <!-- force screen orientation on some browser -->
+    <!-- <meta name="screen-orientation" content="portrait"/>
+    <meta name="x5-orientation" content="portrait"> -->
+
+    <meta name="browsermode" content="application"/>
+    <meta name="x5-page-mode" content="app"/>
+    <script> 
+        var clickTag = "https://play.google.com/store/apps/details?id=com.funvai.dragonminer3d";
+		if (/android/i.test(navigator.userAgent)) clickTag = 'https://play.google.com/store/apps/details?id=com.funvai.dragonminer3d';
+		else if(/iPad|iPhone|iPod/.test(navigator.userAgent)) clickTag = 'https://play.google.com/store/apps/details?id=com.funvai.dragonminer3d';
+    </script>
+	
+	<script>var assetMap={};(function(e,o){var b,x,E,L,t,M,n,l,r,s,a,T,C,N,i,u,O,f,R,k,d,c,p,I,S,A,D,h,v,j,y,H=[].indexOf||function(e){for(var t=0,n=this.length;t<n;t++)if(t in this&&this[t]===e)return t;return-1};i=null,i="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:"undefined"!=typeof global?global:e,c=i.document,x="before",b="after",C="readyState",T="addEventListener",a="removeEventListener",M="dispatchEvent",R="XMLHttpRequest",t="fetch",n="FormData",N=["load","loadend","loadstart"],E=["progress","abort","error","timeout"],v="undefined"!=typeof navigator&&navigator.useragent?navigator.userAgent:"",S=parseInt((/msie (\d+)/.exec(v.toLowerCase())||[])[1]),isNaN(S)&&(S=parseInt((/trident\/.*; rv:(\d+)/.exec(v.toLowerCase())||[])[1])),(y=Array.prototype).indexOf||(y.indexOf=function(e){var t,n,r;for(t=n=0,r=this.length;n<r;t=++n)if(this[t]===e)return t;return-1}),h=function(e,t){return Array.prototype.slice.call(e,t)},d=function(e){return"returnValue"===e||"totalSize"===e||"position"===e},I=function(e,t){var n;for(n in e)if(e[n],!d(n))try{t[n]=e[n]}catch(e){}return t},A=function(e){return void 0===e?null:e},D=function(e,s,a){var t,n,r,o;for(n=function(o){return function(e){var t,n,r;for(n in t={},e)d(n)||(r=e[n],t[n]=r===s?a:r);return a[M](o,t)}},r=0,o=e.length;r<o;r++)t=e[r],a._has(t)&&(s["on"+t]=n(t))},p=function(e){var t;if(c&&null!=c.createEventObject)return(t=c.createEventObject()).type=e,t;try{return new Event(e)}catch(t){return{type:e}}},(j=(L=function(i){var u,r,f;return r={},f=function(e){return r[e]||[]},u={addEventListener:function(e,t,n){r[e]=f(e),0<=r[e].indexOf(t)||(n=n===o?r[e].length:n,r[e].splice(n,0,t))},removeEventListener:function(e,t){var n;e!==o?(t===o&&(r[e]=[]),-1!==(n=f(e).indexOf(t))&&f(e).splice(n,1)):r={}},dispatchEvent:function(){var e,t,n,r,o,s,a;for(t=(e=h(arguments)).shift(),i||(e[0]=I(e[0],p(t))),(r=u["on"+t])&&r.apply(u,e),n=o=0,s=(a=f(t).concat(f("*"))).length;o<s;n=++o)a[n].apply(u,e)},_has:function(e){return!(!r[e]&&!u["on"+e])}},i&&(u.listeners=function(e){return h(f(e))},u.on=u[T],u.off=u[a],u.fire=u[M],u.once=function(e,t){var n;return n=function(){return u.off(e,n),t.apply(null,arguments)},u.on(e,n)},u.destroy=function(){return r={}}),u})(!0)).EventEmitter=L,j[x]=function(e,t){if(e.length<1||2<e.length)throw"invalid hook";return j[T](x,e,t)},j[b]=function(e,t){if(e.length<2||3<e.length)throw"invalid hook";return j[T](b,e,t)},j.enable=function(){i[R]=f,"function"==typeof u&&(i[t]=u),r&&(i[n]=O)},j.disable=function(){i[R]=j[R],i[t]=j[t],r&&(i[n]=r)},k=j.headers=function(e,t){var n,r,o,s,a,i,u,f,d;switch(null==t&&(t={}),typeof e){case"object":for(o in r=[],e)a=e[o],s=o.toLowerCase(),r.push(s+":\t"+a);return r.join("\n")+"\n";case"string":for(u=0,f=(r=e.split("\n")).length;u<f;u++)n=r[u],/([^:]+):\s*(.+)/.test(n)&&(s=null!=(d=RegExp.$1)?d.toLowerCase():void 0,i=RegExp.$2,null==t[s]&&(t[s]=i));return t}},r=i[n],O=function(e){var t,n;this.fd=e?new r(e):new r,this.form=e,t=[],Object.defineProperty(this,"entries",{get:function(){return(e?h(e.querySelectorAll("input,select")).filter(function(e){var t;return"checkbox"!==(t=e.type)&&"radio"!==t||e.checked}).map(function(e){return[e.name,"file"===e.type?e.files:e.value]}):[]).concat(t)}}),this.append=(n=this,function(){var e;return e=h(arguments),t.push(e),n.fd.append.apply(n.fd,e)})},r&&(j[n]=r,i[n]=O),s=i[R],j[R]=s,f=i[R]=function(){var s,t,r,e,f,a,n,o,i,d,c,l,u,p,h,v,y,g,w,m;y=new j[R],u=null,c=p=a=void 0,i=function(){var e,t,n,r;if(c.status=u||y.status,-1===u&&S<10||(c.statusText=y.statusText),-1!==u)for(e in r=k(y.getAllResponseHeaders()))n=r[e],c.headers[e]||(t=e.toLowerCase(),c.headers[t]=n)},o=function(){if(y.responseType&&"text"!==y.responseType)"document"===y.responseType?(c.xml=y.responseXML,c.data=y.responseXML):c.data=y.response;else{c.text=y.responseText,c.data=y.responseText;try{c.xml=y.responseXML}catch(e){}}"responseURL"in y&&(c.finalUrl=y.responseURL)},v=function(){f.status=c.status,f.statusText=c.statusText},h=function(){"text"in c&&(f.responseText=c.text),"xml"in c&&(f.responseXML=c.xml),"data"in c&&(f.response=c.data),"finalUrl"in c&&(f.responseURL=c.finalUrl)},r=function(e){for(;s<e&&s<4;)f[C]=++s,1===s&&f[M]("loadstart",{}),2===s&&v(),4===s&&(v(),h()),f[M]("readystatechange",{}),4===s&&(!1===d.async?t():setTimeout(t,0))},t=function(){a||f[M]("load",{}),f[M]("loadend",{}),a&&(f[C]=0)},s=0,l=function(e){var t,n;4===e?(t=j.listeners(b),(n=function(){var e;return t.length?2===(e=t.shift()).length?(e(d,c),n()):3===e.length&&d.async?e(d,c,n):n():r(4)})()):r(e)},f=(d={}).xhr=L(),y.onreadystatechange=function(e){try{2===y[C]&&i()}catch(e){}4===y[C]&&(p=!1,i(),o()),l(y[C])},n=function(){a=!0},f[T]("error",n),f[T]("timeout",n),f[T]("abort",n),f[T]("progress",function(){s<3?l(3):f[M]("readystatechange",{})}),("withCredentials"in y||j.addWithCredentials)&&(f.withCredentials=!1);for(g=f.status=0,w=(m=E.concat(N)).length;g<w;g++)e=m[g],f["on"+e]=null;return f.open=function(e,t,n,r,o){s=0,p=a=!1,d.headers={},d.headerNames={},d.status=0,c={headers:{}},d.method=e,d.url=t,d.async=!1!==n,d.user=r,d.pass=o,l(1)},f.send=function(e){var n,a,i,r,o,t,s,u;for(t=0,s=(u=["type","timeout","withCredentials"]).length;t<s;t++)(i="type"===(a=u[t])?"responseType":a)in f&&(d[a]=f[i]);d.body=e,o=function(){var e,t,n,r,o,s;for(D(E,y,f),f.upload&&D(E.concat(N),y.upload,f.upload),p=!0,y.open(d.method,d.url,d.async,d.user,d.pass),n=0,r=(o=["type","timeout","withCredentials"]).length;n<r;n++)i="type"===(a=o[n])?"responseType":a,a in d&&(y[i]=d[a]);for(e in s=d.headers)t=s[e],e&&y.setRequestHeader(e,t);d.body instanceof O&&(d.body=d.body.fd),y.send(d.body)},n=j.listeners(x),(r=function(){var e,t;return n.length?((e=function(e){if("object"==typeof e&&("number"==typeof e.status||"number"==typeof c.status))return I(e,c),H.call(e,"data")<0&&(e.data=e.response||e.text),void l(4);r()}).head=function(e){return I(e,c),l(2)},e.progress=function(e){return I(e,c),l(3)},1===(t=n.shift()).length?e(t(d)):2===t.length&&d.async?t(d,e):e()):o()})()},f.abort=function(){u=-1,p?y.abort():f[M]("abort",{})},f.setRequestHeader=function(e,t){var n,r;n=null!=e?e.toLowerCase():void 0,r=d.headerNames[n]=d.headerNames[n]||e,d.headers[r]&&(t=d.headers[r]+", "+t),d.headers[r]=t},f.getResponseHeader=function(e){var t;return t=null!=e?e.toLowerCase():void 0,A(c.headers[t])},f.getAllResponseHeaders=function(){return A(k(c.headers))},y.overrideMimeType&&(f.overrideMimeType=function(){return y.overrideMimeType.apply(y,arguments)}),y.upload&&(f.upload=d.upload=L()),f.UNSENT=0,f.OPENED=1,f.HEADERS_RECEIVED=2,f.LOADING=3,f.DONE=4,f.response="",f.responseText="",f.responseXML=null,f.readyState=0,f.statusText="",f},"function"==typeof i[t]&&(l=i[t],j[t]=l,u=i[t]=function(e,u){var f,d,c;return null==u&&(u={headers:{}}),u.url=e,c=null,d=j.listeners(x),f=j.listeners(b),new Promise(function(n,t){var r,o,s,a,i;o=function(){return u.body instanceof O&&(u.body=u.body.fd),u.headers&&(u.headers=new Headers(u.headers)),c||(c=new Request(u.url,u)),I(u,c)},s=function(e){var t;return f.length?2===(t=f.shift()).length?(t(o(),e),s(e)):3===t.length?t(o(),e,s):s(e):n(e)},r=function(e){var t;if(void 0!==e)return t=new Response(e.body||e.text,e),n(t),void s(t);a()},a=function(){var e;return d.length?1===(e=d.shift()).length?r(e(u)):2===e.length?e(o(),r):void 0:void i()},i=function(){return l(o()).then(function(e){return s(e)}).catch(function(e){return s(e),t(e)})},a()})}),f.UNSENT=0,f.OPENED=1,f.HEADERS_RECEIVED=2,f.LOADING=3,f.DONE=4,"function"==typeof define&&define.amd?define("xhook",[],function(){return j}):"object"==typeof module&&module.exports?module.exports={xhook:j}:i&&(i.xhook=j)}).call(this,window);var mraid={isViewable:function(){return!0},isReady:function(){return!0},getState:function(){return"ready"},open:function(){parent.postMessage("download","*")},getScreenSize:function(){return{width:window.innerWidth,height:window.innerHeight}},addEventListener:function(e,t){"sizeChange"===e&&window.addEventListener("resize",t,!0)},removeEventListener:function(){},getVersion:function(){return"1.0"},useCustomClose:function(){}};window.callSDK=function(){parent.postMessage("download","*")},window.actionClicked=function(){parent.postMessage("download","*")},window.open=function(){parent.postMessage("download","*")};var used=[];if(xhook.before(function(e){return assetMap[e.url]||assetMap[e.url]?(used.push(e.url),{status:200,text:assetMap[e.url]}):e.url.startsWith("data:")?void 0:{status:500,text:"blocked"}}),setTimeout(function(){for(var e in assetMap)assetMap.hasOwnProperty(e)&&-1===used.indexOf(e)&&console.log("unused key",e)},3e3),0<Object.keys(assetMap).length){var NativeImage,createImage=function(){var t=new NativeImage(arguments);return Object.defineProperty(t,"src",{set:function(e){assetMap[e]&&(used.push(e),e=assetMap[e],t.setAttribute("src",e)),(e.startsWith("data:")||e.startsWith("blob:"))&&t.setAttribute("src",e)}}),t.removeAttribute("width"),t};"object"!=typeof window.Image&&(NativeImage=window.Image,window.Image=function(){return createImage.call(this,arguments)})}</script>
+    
+	 <style type="text/css">
+		.center {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width   : 100%;
+			height  : 100%;
+			transform: translate(-50%, -50%);
+			z-index: 100;
+		}
+	</style>
+</head>
+<body>		
+	<script>	
+        var adDetails = {
+            settings:{
+                language:"en",
+                disableCustomClose:"on",
+                enableStretch:true,
+                playStoreUrl:"https://play.google.com/store/apps/details?id=com.funvai.dragonminer3d",
+                itunesUrl:"https://apps.apple.com/app/id1542502766"
+            }
+        };
+    
+	</script>
+	
+    <!--INJECTJS-->
+    
+	<script charset="utf-8" id="gameloader" type="text/javascript" src="index.js"></script>
+		
+	<div class="center">	
+		<div id="gamebox" >
+			<canvas id="canvas"></canvas>
+		</div>
+	</div>
+	
+</body>
+</html>

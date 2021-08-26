@@ -4401,7 +4401,7 @@ ig.module("game.entities.game-control")
                         tutBtn=2;
                         console.log("clicked");
                         }, 
-                        visible:1, 
+                        visible:0, 
                         isAnimating: !1,
                         zIndex:1 });
                 this.tapCart = ig.game.spawnEntity(ButtonCard, 410, 300, { image: this.imageTapCart, 
@@ -4409,14 +4409,14 @@ ig.module("game.entities.game-control")
                         cartMove=1;
                         tutBtn=4;
                     }, 
-                    visible:1, 
+                    visible:0, 
                     isAnimating: !1 });
                 this.tapElev = ig.game.spawnEntity(ButtonCard, 25, 320, { image: this.imageTapElev, 
                     cbClicked: ()=>{
                         elevMove=1;
                         
                     }, 
-                    visible:1, 
+                    visible:0, 
                     isAnimating: !1 });
                 
                  this.handPointer = ig.game.spawnEntity(ButtonCard, 200, 480, { image: this.imageHand, 
@@ -4439,7 +4439,7 @@ ig.module("game.entities.game-control")
                         cbClicked: ()=>{
                           
                         }, 
-                    visible:1, 
+                    visible:0, 
                     isAnimating: !0 });
                     this.elevTut = ig.game.spawnEntity(ButtonCard, 50, 280, { image: this.imageArrow, 
                         cbClicked: ()=>{
@@ -4451,7 +4451,7 @@ ig.module("game.entities.game-control")
                         cbClicked: ()=>{
                            
                         }, 
-                    visible:1, 
+                    visible:0, 
                     isAnimating: !0 });
 
 
@@ -4485,7 +4485,7 @@ ig.module("game.entities.game-control")
                         cbClicked: ()=>{
                            
                         }, 
-                    visible:1, 
+                    visible:0, 
                     isAnimating: !0 });
                     
                     

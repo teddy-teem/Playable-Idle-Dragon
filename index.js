@@ -55,7 +55,7 @@ var spriteSheets = {
         storageScoreBg: "barrier.png",
         idleCash: "idle_cash.png",
         addDrgnBtn: "btn-drgn.png",
-        tapEffect: "tap-effect.png",
+        // tapEffect: "tap-effect.png",
         
 
 
@@ -4180,7 +4180,7 @@ ig.module("game.entities.game-control")
             imageCollectCash2: new ig.Image(imagePath.cash),
             imageCollectCash3: new ig.Image(imagePath.cash),
             imageAddDrgnBtn: new ig.Image(imagePath.addDrgnBtn),
-            imageTapEfect: new ig.Image(imagePath.tapEffect),
+            // imageTapEfect: new ig.Image(imagePath.tapEffect),
         
 
 

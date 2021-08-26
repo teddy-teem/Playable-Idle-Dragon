@@ -4727,6 +4727,7 @@ ig.module("game.entities.game-control")
                                 this.tapDragon.visible=0;
                                 this.tapElev.visible=0;
                                 this.cartTut.visible=0;
+                                this.tapCart.visible=0;
                                 // this.buttonFeed2.visible=0;
                                 // this.buttonFeed3.visible=0;
                                 // this.buttonFeed4.visible=0;   
@@ -4771,6 +4772,7 @@ ig.module("game.entities.game-control")
                                 }
                                 else{
                                     this.drgnTut.visible=0;
+                                    this.tapDragon.visible=0;
                                 }
                                 if(tutBtn==2){
                                     this.elevTut.visible=1;
@@ -4779,15 +4781,18 @@ ig.module("game.entities.game-control")
                                 }
                                 else{
                                     this.elevTut.visible=0;
+                                    this.elevTut.visible=0;
+                                    this.tapElev.visible=0;
                                 }
                                 if(tutBtn==3){
-                                    this.elevTut.visible=0;
-                                    this.cartTut.visible=true;
+                                    this.cartTut.visible=1;
+                                    this.tapCart.visible=1;
                                     cartVisible=1;
                                     
                                 }
                                 else{
                                     this.cartTut.visible=0;
+                                    this.tapCart.visible=0;
                                 }
                                 if(drgnVisible==1){
                                     this.drawMyLevel1(400,440);
@@ -4841,6 +4846,7 @@ ig.module("game.entities.game-control")
                                     this.drawMyLevel2(30,260);
                                }
                                if(elevMove==2){
+                                tutBtn=3;
                                    if(collectedByElev==1){
                                     this.drawCoinBoxtoElev1(this.singleCoinBox1X, this.singleCoinBox1Y);
                                     this.CoinDropBoxToElevTween1();
@@ -4884,6 +4890,16 @@ ig.module("game.entities.game-control")
                     if(gameOverValue==1){
                         this.drawCoinGameOverBg(-150,0);
                         this.drawCoinGameOver(45,100);
+                        // this.tutBtn.visible=0;
+                        this.cartTut.visible=0;
+                        // this.drgnTut.visible=0;
+
+                        this.tapElev.visible=0;
+                        this.tapDragon.visible=0;
+                        this.tapCart.visible=0;
+                        this.addDragonButton.visible=0;
+                        this.addDrgnTut.visible=0;
+
                         this.installGame.visible=1;
                         this.installGame.zIndex=10;
                     }       

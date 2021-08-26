@@ -35,7 +35,7 @@ var spriteSheets = {
         door: "door.png",
         elevator: "elevator.png",
         bottomBar: "bottom-bar.png",
-        wizard: "wizard.png",
+        wizard: "blueWizard.png",
         redWizard: "redWizard.png",
         cart: "cart.png",
         drgnForward: "drgnForward.png",
@@ -117,8 +117,8 @@ var spriteSheets = {
 
    var elevX = 18;
    var elevY = 335;
-   var elevWizX=40;
-   var elevWizY=335;
+   var elevWizX=20;
+   var elevWizY=330;
    var elevMove = 0;
    var elevClicked = 0;
    var elevEndY = 424;
@@ -129,7 +129,7 @@ var spriteSheets = {
    var drgnVisible=0;
    var drgnMove = -1;
    var drgnX= 280;
-   var drgnY= 520; 
+   var drgnY= 535; 
    var startCoin=0;
    
    var drgnWait1=0;
@@ -147,7 +147,7 @@ var spriteSheets = {
    var scoreY=600;
    var scoreShow=0;
 
-   var arrowX=380;
+   var arrowX=320;
    var arrowY = 500;
 
    var coinDrop=0;
@@ -4447,7 +4447,7 @@ ig.module("game.entities.game-control")
                         }, 
                     visible:1, 
                     isAnimating: !0 });
-                    this.cartTut = ig.game.spawnEntity(ButtonCard, 400, 280, { image: this.imageArrow, 
+                    this.cartTut = ig.game.spawnEntity(ButtonCard, 415, 280, { image: this.imageArrow, 
                         cbClicked: ()=>{
                            
                         }, 
@@ -4481,7 +4481,7 @@ ig.module("game.entities.game-control")
                     isAnimating: !1 ,
                     zIndex:1});
                     
-                    this.addDrgnTut = ig.game.spawnEntity(ButtonCard, 265, 485, { image: this.imageArrow, 
+                    this.addDrgnTut = ig.game.spawnEntity(ButtonCard, 280, 485, { image: this.imageArrow, 
                         cbClicked: ()=>{
                            
                         }, 
@@ -5670,7 +5670,7 @@ ig.module("game.entities.game-control")
                 var tr = ig.system.context;
                 tr.save();
                 tr.translate(x, y);
-                tr.scale(0.35, .3);
+                tr.scale(0.12, .1);
                 this.imageWizard.draw(1, 1),
                     tr.restore();
             },
@@ -5695,7 +5695,7 @@ ig.module("game.entities.game-control")
                 var tr = ig.system.context;
                 tr.save();
                 tr.translate(x, y);
-                tr.scale(.17, .15);
+                tr.scale(.15, .13);
                 this.imageDragonForward.draw(1, 1),
                     tr.restore();
                 // console.log("Done");
@@ -5704,7 +5704,7 @@ ig.module("game.entities.game-control")
                 var tr = ig.system.context;
                 tr.save();
                 tr.translate(x, y);
-                tr.scale(.17, .15);
+                tr.scale(.15, .13);
                 this.imageDragonBackward.draw(1, 1),
                     tr.restore();   
             },
@@ -7001,7 +7001,7 @@ ig.module("game.entities.game-control")
                         drgnMove=1;   
                     }
                     if(drgnMove==1){
-                        drgnX-=1.5;
+                        drgnX-=1;
                     }
                     if(drgnX<=190){
                         cashScore=0;

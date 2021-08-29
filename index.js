@@ -4399,7 +4399,7 @@ ig.module("game.entities.game-control")
                 this.tapDragon = ig.game.spawnEntity(ButtonCard, 300, 530, { image: this.imageTapCart, 
                     cbClicked: ()=>{
                         drgnMove=0;
-                        // tutBtn=2;
+                        tutBtn=3;
                         console.log("clicked");
                         }, 
                         visible:0, 
@@ -4408,6 +4408,7 @@ ig.module("game.entities.game-control")
                 this.tapCart = ig.game.spawnEntity(ButtonCard, 410, 300, { image: this.imageTapCart, 
                     cbClicked: ()=>{
                         cartMove=1;
+                        tutBtn=7;
                         
                     }, 
                     visible:0, 
@@ -4415,6 +4416,7 @@ ig.module("game.entities.game-control")
                 this.tapElev = ig.game.spawnEntity(ButtonCard, 25, 320, { image: this.imageTapElev, 
                     cbClicked: ()=>{
                         elevMove=1;
+                        tutBtn=5;
                         
                     }, 
                     visible:0, 
@@ -4710,7 +4712,7 @@ ig.module("game.entities.game-control")
                                 this.drgnTut.visible=0;
                                 this.tapDragon.visible=0;
                             }
-                            if(tutBtn==2){
+                            if(tutBtn==4){
                                 this.elevTut.visible=1;
                                 this.tapElev.visible=1;
                                 elevVisible=1;
@@ -4720,7 +4722,7 @@ ig.module("game.entities.game-control")
                                 this.elevTut.visible=0;
                                 this.tapElev.visible=0;
                             }
-                            if(tutBtn==3){
+                            if(tutBtn==6){
                                 this.cartTut.visible=1;
                                 this.tapCart.visible=1;
                                 cartVisible=1;
@@ -4730,7 +4732,7 @@ ig.module("game.entities.game-control")
                                 this.cartTut.visible=0;
                                 this.tapCart.visible=0;
                             }
-                            if(tutBtn==4){
+                            if(tutBtn==7){
                                 this.cartTut.visible=0;
                                 this.tapCart.visible=0;
                                 cartVisible=0;
@@ -5505,7 +5507,6 @@ ig.module("game.entities.game-control")
             //     this.imageSkyBg.draw(10, 1),
             //         tr.restore();
             // },
-            
             drawSkyBg: function (x, y) {
                 var tr = ig.system.context;
                 tr.save();
@@ -5844,7 +5845,7 @@ ig.module("game.entities.game-control")
                 tr.scale(1.3, .9);
                 this.imageMyButton.draw(0, 0),
                     tr.restore();
-                this.drawScore7(308,440, "Add New Mine", "#000000") 
+                this.drawScore7(308,440, "New Mine", "#000000") 
             },
             drawMyLevel1: function(x,y){
                 var tr = ig.system.context;
@@ -5878,7 +5879,7 @@ ig.module("game.entities.game-control")
                 b.save();
                 b.fillStyle = color;
                 var c = this.posTutorial.x;
-                b.font = "50px curse-casual bold";
+                b.font = "50px Arial bold";
                 b.textAlign = "center";
                 b.translate(x, y);
                 b.scale(0.4, 0.4);
@@ -6901,7 +6902,7 @@ ig.module("game.entities.game-control")
                     if(tempElev==1 && elevMove==0 && temp==0){
                         coinY=170;
                         scoreY=198;
-                        tutBtn=3;
+                        tutBtn=6;
                         scoreX=50;
                         waitElev=0;
                         storageCashVisible=1;
@@ -6924,7 +6925,7 @@ ig.module("game.entities.game-control")
                         scoreTemp=1;
                     }
                     if(cartMove==1){
-                        tutBtn=4;
+                       tutBtn=7;
                         cartX-=2;    
                     }
                     if(cartX<=130 && cartX>=120){
@@ -6936,7 +6937,7 @@ ig.module("game.entities.game-control")
                         coinDrop=0;
                     }
                     if(cartMove==2){
-                        tutBtn=4;
+                        tutBtn=7;
                         waitCart++;   
                     }
                     if(waitCart>=80){
@@ -6948,6 +6949,7 @@ ig.module("game.entities.game-control")
                     if(temp==1 && cartMove==0){
                          cartReached=1;
                          waitCart=0;
+                         tutBtn=7;
                          storageCashScore=0;
                     }
                     if(cartX<=130){
@@ -6997,7 +6999,7 @@ ig.module("game.entities.game-control")
                         drgnTemp=1; 
                         drgnX+=1;
                         if(x==0){
-                            tutBtn=2;
+                            tutBtn=4;
                         }
                         // x=1;
                         

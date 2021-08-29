@@ -92,6 +92,7 @@ var spriteSheets = {
     var cashScore=0;
     let scoreTemp=0;
 
+    let x = 0;
 
     var increaseSv
     var tutBtn=0;
@@ -4398,7 +4399,7 @@ ig.module("game.entities.game-control")
                 this.tapDragon = ig.game.spawnEntity(ButtonCard, 300, 530, { image: this.imageTapCart, 
                     cbClicked: ()=>{
                         drgnMove=0;
-                        tutBtn=2;
+                        // tutBtn=2;
                         console.log("clicked");
                         }, 
                         visible:0, 
@@ -4407,7 +4408,7 @@ ig.module("game.entities.game-control")
                 this.tapCart = ig.game.spawnEntity(ButtonCard, 410, 300, { image: this.imageTapCart, 
                     cbClicked: ()=>{
                         cartMove=1;
-                        tutBtn=4;
+                        
                     }, 
                     visible:0, 
                     isAnimating: !1 });
@@ -4425,10 +4426,11 @@ ig.module("game.entities.game-control")
                     }, 
                     visible:1, 
                     isAnimating: !0 });
-                    this.tapLocekdCell = ig.game.spawnEntity(ButtonCard, 260, 460, { image: this.imageTapCart, 
+                    this.tapLocekdCell = ig.game.spawnEntity(ButtonCard, 270, 420, { image: this.imageTapCart, 
                         cbClicked: ()=>{
                             gameClicked=1;
                             console.log("Clicked");
+                            
                         }, 
                         visible:1,
                         zIndex:3, 
@@ -4469,7 +4471,7 @@ ig.module("game.entities.game-control")
                         }, 
                     visible:0, 
                     isAnimating: !0 });
-                    this.addDragonButton = ig.game.spawnEntity(ButtonCard, 240, 530, { image: this.imageAddDrgnBtn, 
+                    this.addDragonButton = ig.game.spawnEntity(ButtonCard, 240, 550, { image: this.imageAddDrgnBtn, 
                         cbClicked: ()=>{
                             // console.log("Clicked")
                             drgnShow=1;
@@ -4593,337 +4595,255 @@ ig.module("game.entities.game-control")
             },
             //Master draw class for controller
             draw: function () {
-                if (this.gamepause == 0) {
-                    this.parent();
-                    // this.drawEndlessBG();
-                    // //this.drawBG(); //draw for bg
-                    // this.drawRoad();
-                    // // this.drawTreeSet();
-                    // this.tween({
-                    //     pos:{x:300, y:80}},
-                    //     2,{
-                    //         easing: ig.Tween.Easing.Sinusoidal.EaseInOut,
-                    //         delay: 0,
-                    //         onComplete: function(){
-                    //             console.log("Hello i am Tween");
-                    //             // this.drawSkyBg(0, 0);
-                    //             console.log(this.pos.x, this.pos.y);
-                    //             // this.draw();
-                    //         }.bind(this)
-                    //     }).start();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    this.drawSkyBg(0, 0);
-                    this.drawRailLine(130,400)
-
-                    this.drawWareHouse(340,66);
-                    
-                    this.drawRedWizard( redWizX,redWizY);
-
-                    this.drawBottomBar(0,0);
-                    this.drawScoreBar(208,10);
-                    this.drawBucks(208,15);
-                    this.drawScoreBar(408,10);
-                    this.drawCash(415,15);
-                    this.drawScoreBar(2,10);
-                    this.drawIdleCash(2,10);
-
-                    this.drawProductionCell(0,415);
-                    this.drawLockedCell(0,660);
-                    this.drawLockedCell(0,860);
-
-                    this.drawDoor(12,170);
-                    if(tempElev==1){
-                        this.drawCoinCollected3(50, coinY);
-                        this.drawCoinCollected3(40, coinY);
-                        this.drawCoinCollected3(60, coinY);
-                        this.drawCoinCollected3(30, coinY);
-
-                    }
-                    if(coinDrop==1){
-                        this.drawCoinDrops1(this.coindDrop1X,this.coindDrop1Y);
-                            this.CoinDropTween1();
-                            this.drawCoinDrops2(this.coindDrop2X,this.coindDrop2Y);
-                            if(this.coindDrop1Y>=340)
-                                this.CoinDropTween2();
-                            this.drawCoinDrops3(this.coindDrop3X,this.coindDrop3Y);
-                            if(this.coindDrop2Y>=340)
-                                this.CoinDropTween3();
-                            this.drawCoinDrops4(this.coindDrop4X,this.coindDrop4Y);
-                            if(this.coindDrop3Y>=340)
-                                this.CoinDropTween4();
-                            this.drawCoinDrops5(this.coindDrop5X,this.coindDrop5Y);
-                            if(this.coindDrop4Y>=340)
-                                this.CoinDropTween5();
-                            this.drawCoinDrops6(this.coindDrop6X,this.coindDrop6Y);
-                            if(this.coindDrop5Y>=340)
-                                this.CoinDropTween6();
-                            this.drawCoinDrops7(this.coindDrop7X,this.coindDrop7Y);
-                            if(this.coindDrop6Y>=340)
-                                this.CoinDropTween7();
-                            this.drawCoinDrops8(this.coindDrop8X,this.coindDrop8Y);
-                            if(this.coindDrop7Y>=340)
-                                this.CoinDropTween8();
-                               
-                        
-                    }
-                    this.drawCart(cartX,cartY);
-                  
-                    
-                   
-
-                    if(gameClicked==0 && gameOverValue==0){
-                                this.drawLockedCell(0,424);
+                    // if(MJS.view.viewport.orientation.portrait){
+                        this.drawSkyBg(0, 0);
+                        this.drawRailLine(130,400)
+                        this.drawWareHouse(340,66);
+                        this.drawRedWizard( redWizX,redWizY);
+                        this.drawBottomBar(0,0);
+                        this.drawScoreBar(208,10);
+                        this.drawBucks(208,15);
+                        this.drawScoreBar(408,10);
+                        this.drawCash(415,15);
+                        this.drawScoreBar(2,10);
+                        this.drawIdleCash(2,10);
+                        this.drawProductionCell(0,415);
+                        this.drawLockedCell(0,660);
+                        this.drawLockedCell(0,860);
+                        this.drawDoor(12,170);
+                        if(tempElev==1){
+                            this.drawCoinCollected3(50, coinY);
+                            this.drawCoinCollected3(40, coinY);
+                            this.drawCoinCollected3(60, coinY);
+                            this.drawCoinCollected3(30, coinY);
+                        }
+                        if(coinDrop==1){
+                            this.drawCoinDrops1(this.coindDrop1X,this.coindDrop1Y);
+                                this.CoinDropTween1();
+                                this.drawCoinDrops2(this.coindDrop2X,this.coindDrop2Y);
+                                if(this.coindDrop1Y>=340)
+                                    this.CoinDropTween2();
+                                this.drawCoinDrops3(this.coindDrop3X,this.coindDrop3Y);
+                                if(this.coindDrop2Y>=340)
+                                    this.CoinDropTween3();
+                                this.drawCoinDrops4(this.coindDrop4X,this.coindDrop4Y);
+                                if(this.coindDrop3Y>=340)
+                                    this.CoinDropTween4();
+                                this.drawCoinDrops5(this.coindDrop5X,this.coindDrop5Y);
+                                if(this.coindDrop4Y>=340)
+                                    this.CoinDropTween5();
+                                this.drawCoinDrops6(this.coindDrop6X,this.coindDrop6Y);
+                                if(this.coindDrop5Y>=340)
+                                    this.CoinDropTween6();
+                                this.drawCoinDrops7(this.coindDrop7X,this.coindDrop7Y);
+                                if(this.coindDrop6Y>=340)
+                                    this.CoinDropTween7();
+                                this.drawCoinDrops8(this.coindDrop8X,this.coindDrop8Y);
+                                if(this.coindDrop7Y>=340)
+                                    this.CoinDropTween8();    
+                        }
+                        this.drawCart(cartX,cartY);
+                        if(gameClicked==0 && gameOverValue==0){
+                            this.drawLockedCell(0,424);
+                            this.drawMyLevelAddMine(270,440);                                
+                            this.drawLockedCell(0,660);
+                            this.drawWizard(elevWizX,elevWizY);
+                            this.drawElevator(elevX,elevY);
+                            this.drawStorage(8,135);
+                            this.drawStorageScoreBg(40,215);
+                            if(storageCashVisible==1){
+                                storageCashScore=elevCashScore;
+                            }
+                            this.drawScore3(35, 199, cashScoreStorage,"#FFFFFF");
+                            cartCash
+                            if(cartMove==2){
+                                cashScoreStorage=0;
+                                this.drawScore4(scoreCartX, 345, cashScoreCart, "#ffffff");
                                 
-                                this.drawLockedCell(0,660);
-                                this.drawWizard(elevWizX,elevWizY);
-                                this.drawElevator(elevX,elevY);
-                                this.drawStorage(8,135);
-                                this.drawStorageScoreBg(40,215);
-                                if(storageCashVisible==1){
-                                    storageCashScore=elevCashScore;
-                                }
-                                this.drawScore3(35, 199, cashScoreStorage,"#FFFFFF");
-                                cartCash
-                                if(cartMove==2){
-                                    cashScoreStorage=0;
-                                    this.drawScore4(scoreCartX, 345, cashScoreCart, "#ffffff");
-                                    
-                                    
-                                }
-                                this.drawLandLine(0,410);
-                                this.drawElevatorRailEnd(5,elevEndY);
+                                
+                            }
+                            this.drawLandLine(0,410);
+                            this.drawElevatorRailEnd(5,elevEndY);
+                            this.addDragonButton.visible=0;
+                            this.addDrgnTut.visible=0;
+                            this.drgnTut.visible=0;
+                            this.elevTut.visible=0;
+                            this.tapDragon.visible=0;
+                            this.tapElev.visible=0;
+                            this.cartTut.visible=0;
+                            this.tapCart.visible=0;
+                        }
+                        if(gameClicked==1){
+                            this.tapLocekdCell.visible=0;
+                            this.drawLandLine2(0,645);
+                            this.drawElevatorRail(5,405);
+                            this.drawElevatorRailEnd(5,650);
+                            this.drawWizard(elevWizX,elevWizY);  
+                            this.drawElevator(elevX,elevY);
+                            this.drawStorage(8,135);
+                            this.drawStorageScoreBg(40,215);
+                            if(storageCashVisible==1){
+                                storageCashScore=elevCashScore;
+                            }
+                            this.drawScore3(35, 199, cashScoreStorage,"#FFFFFF");
+                           
+                            if(cartMove==2){
+                                cashScoreStorage=0;
+                                this.drawScore4(scoreCartX, 345, cashScoreCart, "#ffffff");
+                            }
+                            this.drawBoxCoin(135,600);
+                            this.handPointer.visible=0;
+                            if(tutBtn==0){
+                                this.addDragonButton.visible=1;
+                                this.addDrgnTut.visible=1;
+                            }
+                            else{
                                 this.addDragonButton.visible=0;
                                 this.addDrgnTut.visible=0;
+                            }
+                            if(tutBtn==1){
+                                this.drgnTut.visible=1;
+                                this.tapDragon.visible=1;
+                                drgnVisible=1;
+                            }
+                            else{
                                 this.drgnTut.visible=0;
-                                this.elevTut.visible=0;
                                 this.tapDragon.visible=0;
+                            }
+                            if(tutBtn==2){
+                                this.elevTut.visible=1;
+                                this.tapElev.visible=1;
+                                elevVisible=1;
+                            }
+                            else{
+                                this.elevTut.visible=0;
+                                this.elevTut.visible=0;
                                 this.tapElev.visible=0;
+                            }
+                            if(tutBtn==3){
+                                this.cartTut.visible=1;
+                                this.tapCart.visible=1;
+                                cartVisible=1;
+                                
+                            }
+                            else{
                                 this.cartTut.visible=0;
                                 this.tapCart.visible=0;
-                                // this.buttonFeed2.visible=0;
-                                // this.buttonFeed3.visible=0;
-                                // this.buttonFeed4.visible=0;   
-                                // this.buttonFeed6.visible=0; 
-                                // this.buttonFeed7.visible=0;   
-                                // this.buttonFeed8.visible=0;
-                                // this.buttonFeed10.visible=0; 
-                                // this.buttonFeed11.visible=0;
-                    }
-                    if(gameClicked==1){
-                                this.tapLocekdCell.visible=0;
-                                this.drawLandLine2(0,645);
-                                this.drawElevatorRail(5,405);
-                                this.drawElevatorRailEnd(5,650);
-                                this.drawWizard(elevWizX,elevWizY);  
-                                this.drawElevator(elevX,elevY);
-                                this.drawStorage(8,135);
-                                this.drawStorageScoreBg(40,215);
-                                if(storageCashVisible==1){
-                                    storageCashScore=elevCashScore;
-                                }
-                                this.drawScore3(35, 199, cashScoreStorage,"#FFFFFF");
-                               
-                                if(cartMove==2){
-                                    cashScoreStorage=0;
-                                    this.drawScore4(scoreCartX, 345, cashScoreCart, "#ffffff");
-                                }
-                                this.drawBoxCoin(135,600);
-                                this.handPointer.visible=0;
-                                if(tutBtn==0){
-                                    this.addDragonButton.visible=1;
-                                    this.addDrgnTut.visible=1;
-                                }
-                                else{
-                                    this.addDragonButton.visible=0;
-                                    this.addDrgnTut.visible=0;
-                                }
-                                if(tutBtn==1){
-                                    this.drgnTut.visible=1;
-                                    this.tapDragon.visible=1;
-                                    drgnVisible=1;
-                                }
-                                else{
-                                    this.drgnTut.visible=0;
-                                    this.tapDragon.visible=0;
-                                }
-                                if(tutBtn==2){
-                                    this.elevTut.visible=1;
-                                    this.tapElev.visible=1;
-                                    elevVisible=1;
-                                }
-                                else{
-                                    this.elevTut.visible=0;
-                                    this.elevTut.visible=0;
-                                    this.tapElev.visible=0;
-                                }
-                                if(tutBtn==3){
-                                    this.cartTut.visible=1;
-                                    this.tapCart.visible=1;
-                                    cartVisible=1;
-                                    
-                                }
-                                else{
-                                    this.cartTut.visible=0;
-                                    this.tapCart.visible=0;
-                                }
-                                if(drgnVisible==1){
-                                    this.drawMyLevel1(400,440);
-                                    this.tapDragon.visible=1;
-                                    if(drgnMove==0 || drgnMove==2 ){
-                                        this.drawDragonBackward(drgnX, drgnY);
-                                    }
-                                    else{
-                                        this.drawDragonForward(drgnX, drgnY); 
-                                    }
-                                }
-                                if(drgnMove==0){
-                                    this.drawDrgnCoin1(this.drgnCoin1X,this.drgnCoin1Y);
-                                    this.drawDrgnCoin2(this.drgnCoin2X,this.drgnCoin2Y);
-                                    this.drawDrgnCoin3(this.drgnCoin3X,this.drgnCoin3Y);
-                                    this.drawDrgnCoin4(this.drgnCoin4X,this.drgnCoin4Y);
-                                    this.drawDrgnCoin5(this.drgnCoin5X,this.drgnCoin5Y);
-                                    this.drawDrgnCoin6(this.drgnCoin6X,this.drgnCoin6Y);
-                                    this.drawDrgnCoin7(this.drgnCoin7X,this.drgnCoin7Y);
-                                    this.drawDrgnCoin8(this.drgnCoin8X,this.drgnCoin8Y);
-                                    this.drgnCoinTween1();
-                                    if(this.drgnCoin1X<=420){
-                                        this.drgnCoinTween2();
-                                    }
-                                    if(this.drgnCoin2X<=420)
-                                        this.drgnCoinTween3();
-                                    if(this.drgnCoin3X<=420)
-                                        this.drgnCoinTween4();
-                                    if(this.drgnCoin3X<=420)
-                                        this.drgnCoinTween5();
-                                    if(this.drgnCoin5X<=420)
-                                        this.drgnCoinTween6();
-                                    if(this.drgnCoin5X<=420)
-                                        this.drgnCoinTween7();
-                                    if(this.drgnCoin1X<=420)
-                                        this.drgnCoinTween8();
-
-                                    
-                                }
+                            }
+                            if(tutBtn==4){
+                                this.cartTut.visible=0;
+                                this.tapCart.visible=0;
+                                cartVisible=0;
                                 
-                               if(drgnMove==2){
-                                 boxCoin=1;
-
-                               
-                               }
-                               if(boxCoin==1){
-                                    this.drawCoinCollected2(140,575);
-                                    this.drawScore5(120, 600,cashScoreBox, "#FFFFFF");
-                               }
-                               if(elevVisible==1){
-                                    this.drawMyLevel2(30,260);
-                               }
-                               if(elevMove==2){
-                                tutBtn=3;
-                                   if(collectedByElev==1){
-                                    this.drawCoinBoxtoElev1(this.singleCoinBox1X, this.singleCoinBox1Y);
-                                    this.CoinDropBoxToElevTween1();
-                                    this.drawCoinBoxtoElev2(this.singleCoinBox2X, this.singleCoinBox2Y);
-                                    if(this.singleCoinBox1Y>=600)
-                                        this.CoinDropBoxToElevTween2();
-                                    this.drawCoinBoxtoElev3(this.singleCoinBox3X, this.singleCoinBox3Y);
-                                    if(this.singleCoinBox2Y>=620)
-                                        this.CoinDropBoxToElevTween3();
-                                    this.drawCoinBoxtoElev4(this.singleCoinBox4X, this.singleCoinBox4Y);
-                                    if(this.singleCoinBox3Y>=650)
-                                        this.CoinDropBoxToElevTween4();
-                                   }
-                                   else{
-                                    this.drawCoinCollected(40, coinY);
-                                   }
-                                   boxCoin=0;
-                                   console.log(cashScoreElev);
-                                   cashScoreBox=80;
-                                    this.drawScore2(scoreX, scoreY, cashScoreElev,"#ffffff");      
+                            }
+                            
+                            if(drgnVisible==1){
+                                this.drawMyLevel1(400,440);
+                                this.tapDragon.visible=1;
+                                if(drgnMove==0 || drgnMove==2 ){
+                                    this.drawDragonBackward(drgnX, drgnY);
+                                }
+                                else{
+                                    this.drawDragonForward(drgnX, drgnY); 
+                                }
+                            }
+                            if(drgnMove==0){
+                                this.drawDrgnCoin1(this.drgnCoin1X,this.drgnCoin1Y);
+                                this.drawDrgnCoin2(this.drgnCoin2X,this.drgnCoin2Y);
+                                this.drawDrgnCoin3(this.drgnCoin3X,this.drgnCoin3Y);
+                                this.drawDrgnCoin4(this.drgnCoin4X,this.drgnCoin4Y);
+                                this.drawDrgnCoin5(this.drgnCoin5X,this.drgnCoin5Y);
+                                this.drawDrgnCoin6(this.drgnCoin6X,this.drgnCoin6Y);
+                                this.drawDrgnCoin7(this.drgnCoin7X,this.drgnCoin7Y);
+                                this.drawDrgnCoin8(this.drgnCoin8X,this.drgnCoin8Y);
+                                this.drgnCoinTween1();
+                                if(this.drgnCoin1X<=420){
+                                    this.drgnCoinTween2();
+                                }
+                                if(this.drgnCoin2X<=420)
+                                    this.drgnCoinTween3();
+                                if(this.drgnCoin3X<=420)
+                                    this.drgnCoinTween4();
+                                if(this.drgnCoin3X<=420)
+                                    this.drgnCoinTween5();
+                                if(this.drgnCoin5X<=420)
+                                    this.drgnCoinTween6();
+                                if(this.drgnCoin5X<=420)
+                                    this.drgnCoinTween7();
+                                if(this.drgnCoin1X<=420)
+                                    this.drgnCoinTween8();   
+                            }
+                            if(drgnMove==2){
+                                boxCoin=1;
+                              }
+                              if(boxCoin==1){
+                                   this.drawCoinCollected2(140,575);
+                                   this.drawScore5(120, 600,cashScoreBox, "#FFFFFF");
+                              }
+                              if(elevVisible==1){
+                                   this.drawMyLevel2(30,260);
+                              }
+                              if(elevMove==2){
                                 
-                               }
-                               if(cartVisible==1){
+                                if(collectedByElev==1){
+                                 this.drawCoinBoxtoElev1(this.singleCoinBox1X, this.singleCoinBox1Y);
+                                 this.CoinDropBoxToElevTween1();
+                                 this.drawCoinBoxtoElev2(this.singleCoinBox2X, this.singleCoinBox2Y);
+                                 if(this.singleCoinBox1Y>=600)
+                                     this.CoinDropBoxToElevTween2();
+                                 this.drawCoinBoxtoElev3(this.singleCoinBox3X, this.singleCoinBox3Y);
+                                 if(this.singleCoinBox2Y>=620)
+                                     this.CoinDropBoxToElevTween3();
+                                 this.drawCoinBoxtoElev4(this.singleCoinBox4X, this.singleCoinBox4Y);
+                                 if(this.singleCoinBox3Y>=650)
+                                     this.CoinDropBoxToElevTween4();
+                                }
+                                else{
+                                 this.drawCoinCollected(40, coinY);
+                                }
+                                boxCoin=0;
+                                console.log(cashScoreElev);
+                                cashScoreBox=80;
+                                 this.drawScore2(scoreX, scoreY, cashScoreElev,"#ffffff");      
+                            }
+                            if(cartVisible==1){
                                 this.drawMyLevel3(400,210)
-                               }
-                               
-                                this.drawLandLine(0,410);
-                                 if(cartReached==1){
-                                    this.drawCollectCash1(this.singlecoin1X,this.singlecoin1);
-                                    this.Tween1();
-                                    this.drawCollectCash2(this.singlecoin2X,this.singlecoin2);
-                                    if(this.singlecoin1<=200){
-                                        this.Tween2();
-                                    }
-                                    this.drawCollectCash3(this.singlecoin3X,this.singlecoin3);
-                                    if(this.singlecoin2<=200){
-                                        this.Tween3();
-                                    }
-                                    
+                            } 
+                            this.drawLandLine(0,410);
+                            if(cartReached==1){
+                                this.drawCollectCash1(this.singlecoin1X,this.singlecoin1);
+                                this.Tween1();
+                                this.drawCollectCash2(this.singlecoin2X,this.singlecoin2);
+                                if(this.singlecoin1<=200){
+                                    this.Tween2();
                                 }
-                    if(gameOverValue==1){
-                        this.drawCoinGameOverBg(-150,0);
-                        this.drawCoinGameOver(45,100);
-                        // this.tutBtn.visible=0;
-                        this.cartTut.visible=0;
-                        // this.drgnTut.visible=0;
-
-                        this.tapElev.visible=0;
-                        this.tapDragon.visible=0;
-                        this.tapCart.visible=0;
-                        this.addDragonButton.visible=0;
-                        this.addDrgnTut.visible=0;
-
-                        this.installGame.visible=1;
-                        this.installGame.zIndex=10;
-                    }       
-                        
+                                this.drawCollectCash3(this.singlecoin3X,this.singlecoin3);
+                                if(this.singlecoin2<=200){
+                                    this.Tween3();
+                                }  
+                            }
+                            if(gameOverValue==1){
+                                this.drawCoinGameOverBg(-150,0);
+                                this.drawCoinGameOver(45,100);
+                                // this.tutBtn.visible=0;
+                                this.cartTut.visible=0;
+                                // this.drgnTut.visible=0;
+        
+                                this.tapElev.visible=0;
+                                this.tapDragon.visible=0;
+                                this.tapCart.visible=0;
+                                this.addDragonButton.visible=0;
+                                this.addDrgnTut.visible=0;
+        
+                                this.installGame.visible=1;
+                                this.installGame.zIndex=10;
+                            } 
+                        }    
+                    // }
+                    // if(MJS.view.viewport.orientation.landscape){
+                    //     this.drawDoor(12,170);
+                    // }
                     
-                }
-            } 
-                
-         
-                
-                else {
-                    this.parent();
-                    this.drawEndlessBG();
-                    //this.drawBG(); //draw for bg
-                    this.drawRoad();
-                    //this.drawTreeSet();
-                    //this.drawCloud();
-                    this.drawThif();
-                    //this.drawBlust();
-                    this.drawStone(0.15);
-                    this.drawHUD();
-                    this.drawGameOver();
-                }
-
             },
 
 
@@ -5585,6 +5505,7 @@ ig.module("game.entities.game-control")
             //     this.imageSkyBg.draw(10, 1),
             //         tr.restore();
             // },
+            
             drawSkyBg: function (x, y) {
                 var tr = ig.system.context;
                 tr.save();
@@ -5916,6 +5837,15 @@ ig.module("game.entities.game-control")
                         tr.restore();
                 // }
             },
+            drawMyLevelAddMine: function(x,y){
+                var tr = ig.system.context;
+                tr.save();
+                tr.translate(x, y);
+                tr.scale(1.3, .9);
+                this.imageMyButton.draw(0, 0),
+                    tr.restore();
+                this.drawScore7(308,440, "Add New Mine", "#000000") 
+            },
             drawMyLevel1: function(x,y){
                 var tr = ig.system.context;
                 tr.save();
@@ -5942,6 +5872,23 @@ ig.module("game.entities.game-control")
                 this.imageMyButton.draw(0, 0),
                     tr.restore();
                 this.drawScore6(403,205, "Level: 01", "#000000") 
+            },
+            drawScore7: function(x,y, value, color){
+                var b = ig.system.context;
+                b.save();
+                b.fillStyle = color;
+                var c = this.posTutorial.x;
+                b.font = "50px curse-casual bold";
+                b.textAlign = "center";
+                b.translate(x, y);
+                b.scale(0.4, 0.4);
+                b.lineWidth = 1;
+                b.strokeStyle = "#FF0000";
+                // b.strokeText("Score : ", 50, 0);
+                // b.fillText("Score : ", 50, 0);
+                b.strokeText(value, 80, 80);
+                b.fillText(value, 80,80);
+                b.restore();
             },
             drawScore: function(x,y, value, color){
                 var b = ig.system.context;
@@ -6954,6 +6901,7 @@ ig.module("game.entities.game-control")
                     if(tempElev==1 && elevMove==0 && temp==0){
                         coinY=170;
                         scoreY=198;
+                        tutBtn=3;
                         scoreX=50;
                         waitElev=0;
                         storageCashVisible=1;
@@ -6963,7 +6911,6 @@ ig.module("game.entities.game-control")
                         elevMove=0;
                     }
                     if(elevY>=575){
-                        tutBtn=3;
                         scoreX=40;
                         scoreY=555;
                         elevMove=2;
@@ -6977,6 +6924,7 @@ ig.module("game.entities.game-control")
                         scoreTemp=1;
                     }
                     if(cartMove==1){
+                        tutBtn=4;
                         cartX-=2;    
                     }
                     if(cartX<=130 && cartX>=120){
@@ -6988,6 +6936,7 @@ ig.module("game.entities.game-control")
                         coinDrop=0;
                     }
                     if(cartMove==2){
+                        tutBtn=4;
                         waitCart++;   
                     }
                     if(waitCart>=80){
@@ -7043,12 +6992,18 @@ ig.module("game.entities.game-control")
                         this.drgnCoin7Y=600;
                         this.drgnCoin8Y=620;  
                     }
+                    
                     if(drgnMove==2){
-                        drgnTemp=1;
+                        drgnTemp=1; 
                         drgnX+=1;
+                        if(x==0){
+                            tutBtn=2;
+                        }
+                        // x=1;
                         
                     }
-                    if(drgnX>=280 && drgnTemp==1){                        
+                    if(drgnX>=280 && drgnTemp==1){ 
+                        x=1;                
                         drgnMove=0;
                     }
                 }

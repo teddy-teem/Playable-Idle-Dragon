@@ -93,6 +93,9 @@ var spriteSheets = {
     let scoreTemp=0;
 
     let x = 0;
+    let showCartCoin=0;
+    let cartCoinCollectedX=150;
+    let level3Visible=0;
 
     var increaseSv
     var tutBtn=0;
@@ -4400,7 +4403,6 @@ ig.module("game.entities.game-control")
                     cbClicked: ()=>{
                         drgnMove=0;
                         tutBtn=3;
-                        console.log("clicked");
                         }, 
                         visible:0, 
                         isAnimating: !1,
@@ -4431,7 +4433,6 @@ ig.module("game.entities.game-control")
                     this.tapLocekdCell = ig.game.spawnEntity(ButtonCard, 270, 420, { image: this.imageTapCart, 
                         cbClicked: ()=>{
                             gameClicked=1;
-                            console.log("Clicked");
                             
                         }, 
                         visible:1,
@@ -4475,7 +4476,6 @@ ig.module("game.entities.game-control")
                     isAnimating: !0 });
                     this.addDragonButton = ig.game.spawnEntity(ButtonCard, 240, 550, { image: this.imageAddDrgnBtn, 
                         cbClicked: ()=>{
-                            // console.log("Clicked")
                             drgnShow=1;
                             // console.log("Drgn Btn Clicked");
                             tutBtn=1;
@@ -4600,7 +4600,7 @@ ig.module("game.entities.game-control")
                     // if(MJS.view.viewport.orientation.portrait){
                         this.drawSkyBg(0, 0);
                         this.drawRailLine(130,400)
-                        this.drawWareHouse(340,66);
+                        this.drawWareHouse(295,100);
                         this.drawRedWizard( redWizX,redWizY);
                         this.drawBottomBar(0,0);
                         this.drawScoreBar(208,10);
@@ -4643,6 +4643,9 @@ ig.module("game.entities.game-control")
                                 this.drawCoinDrops8(this.coindDrop8X,this.coindDrop8Y);
                                 if(this.coindDrop7Y>=340)
                                     this.CoinDropTween8();    
+                        }
+                        if(showCartCoin==1){
+                            this.drawCoinCollectedByCart(cartCoinCollectedX,330);
                         }
                         this.drawCart(cartX,cartY);
                         if(gameClicked==0 && gameOverValue==0){
@@ -4735,7 +4738,7 @@ ig.module("game.entities.game-control")
                             if(tutBtn==7){
                                 this.cartTut.visible=0;
                                 this.tapCart.visible=0;
-                                cartVisible=0;
+                                // cartVisible=0;
                                 
                             }
                             
@@ -4804,13 +4807,13 @@ ig.module("game.entities.game-control")
                                  this.drawCoinCollected(40, coinY);
                                 }
                                 boxCoin=0;
-                                console.log(cashScoreElev);
                                 cashScoreBox=80;
                                  this.drawScore2(scoreX, scoreY, cashScoreElev,"#ffffff");      
                             }
                             if(cartVisible==1){
                                 this.drawMyLevel3(400,210)
                             } 
+                            
                             this.drawLandLine(0,410);
                             if(cartReached==1){
                                 this.drawCollectCash1(this.singlecoin1X,this.singlecoin1);
@@ -4828,6 +4831,7 @@ ig.module("game.entities.game-control")
                                 this.drawCoinGameOverBg(-150,0);
                                 this.drawCoinGameOver(45,100);
                                 // this.tutBtn.visible=0;
+                                this.drawImageLogo(220,300);
                                 this.cartTut.visible=0;
                                 // this.drgnTut.visible=0;
         
@@ -4895,7 +4899,7 @@ ig.module("game.entities.game-control")
                     b.save();
                     b.fillStyle = "#FFFFFF";
                     var c = this.posTutorial.x;
-                    b.font = "40px curse-casual";
+                    b.font = "40px arial";
                     b.textAlign = "center";
                     b.translate(c, this.posTutorial.y - 10 * this.scaleTutorial);
                     b.scale(this.scaleTutorial, this.scaleTutorial);
@@ -5134,7 +5138,7 @@ ig.module("game.entities.game-control")
                     b.save();
                     b.fillStyle = "#FFFFFF";
                     var c = this.posTutorial.x;
-                    b.font = "40px curse-casual";
+                    b.font = "40px arial";
                     b.textAlign = "center";
                     b.translate(100, 100);
                     b.scale(this.scaleTutorial, this.scaleTutorial);
@@ -5158,7 +5162,7 @@ ig.module("game.entities.game-control")
                     b.save();
                     b.fillStyle = "#FFFFFF";
                     var c = this.posTutorial.x;
-                    b.font = "40px curse-casual";
+                    b.font = "40px arial";
                     b.textAlign = "center";
                     b.translate(100, 100);
                     b.scale(this.scaleTutorial, this.scaleTutorial);
@@ -5540,6 +5544,14 @@ ig.module("game.entities.game-control")
                 this.imageLandLine.draw(1, 1),
                     tr.restore();
             },
+            drawImageLogo: function (x, y) {
+                var tr = ig.system.context;
+                tr.save();
+                tr.translate(x, y);
+                tr.scale(0.1, .1);
+                this.imageLogo.draw(1, 1),
+                    tr.restore();
+            },
             drawLandLine2: function (x, y) {
                 var tr = ig.system.context;
                 tr.save();
@@ -5584,7 +5596,7 @@ ig.module("game.entities.game-control")
                 var tr = ig.system.context;
                 tr.save();
                 tr.translate(x, y);
-                tr.scale(.8, 1);
+                tr.scale(1, 0.9);
                 this.imageWareHouse.draw(1, 10),
                     tr.restore();
             },
@@ -5677,6 +5689,17 @@ ig.module("game.entities.game-control")
                 //  console.log("Ok");
             },
             drawCoinCollected2: function(x,y){
+                // if(v==1){
+                    var tr = ig.system.context;
+                    tr.save();
+                    tr.translate(x, y);
+                    tr.scale(0.842, 1);
+                    this.imageCoinCollected.draw(1, 1),
+                        tr.restore();
+                // }
+                //  console.log("Ok");
+            },
+            drawCoinCollectedByCart: function(x,y){
                 // if(v==1){
                     var tr = ig.system.context;
                     tr.save();
@@ -5879,7 +5902,7 @@ ig.module("game.entities.game-control")
                 b.save();
                 b.fillStyle = color;
                 var c = this.posTutorial.x;
-                b.font = "50px Arial bold";
+                b.font = "50px arial bold";
                 b.textAlign = "center";
                 b.translate(x, y);
                 b.scale(0.4, 0.4);
@@ -5896,7 +5919,7 @@ ig.module("game.entities.game-control")
                 b.save();
                 b.fillStyle = color;
                 var c = this.posTutorial.x;
-                b.font = "50px curse-casual bold";
+                b.font = "50px arial bold";
                 b.textAlign = "center";
                 b.translate(x, y);
                 b.scale(0.4, 0.4);
@@ -5913,7 +5936,7 @@ ig.module("game.entities.game-control")
                 b.save();
                 b.fillStyle = color;
                 var c = this.posTutorial.x;
-                b.font = "35px curse-casual bold";
+                b.font = "35px arial bold";
                 b.textAlign = "center";
                 b.translate(x, y);
                 b.scale(0.5, 0.4);
@@ -5930,7 +5953,7 @@ ig.module("game.entities.game-control")
                 b.save();
                 b.fillStyle = color;
                 var c = this.posTutorial.x;
-                b.font = "50px curse-casual bold";
+                b.font = "50px arial bold";
                 b.textAlign = "center";
                 b.translate(x, y);
                 b.scale(0.4, 0.4);
@@ -5948,7 +5971,7 @@ ig.module("game.entities.game-control")
                 b.save();
                 b.fillStyle = color;
                 var c = this.posTutorial.x;
-                b.font = "50px curse-casual bold";
+                b.font = "50px arial bold";
                 b.textAlign = "center";
                 b.translate(x, y);
                 b.scale(0.4, 0.4);
@@ -5965,7 +5988,7 @@ ig.module("game.entities.game-control")
                 b.save();
                 b.fillStyle = color;
                 var c = this.posTutorial.x;
-                b.font = "50px curse-casual bold";
+                b.font = "50px arial bold";
                 b.textAlign = "center";
                 b.translate(x, y);
                 b.scale(0.5, 0.4);
@@ -5982,7 +6005,7 @@ ig.module("game.entities.game-control")
                 b.save();
                 b.fillStyle = color;
                 var c = this.posTutorial.x;
-                b.font = "50px curse-casual bold";
+                b.font = "50px arial bold";
                 b.textAlign = "center";
                 b.translate(x, y);
                 b.scale(0.4, 0.4);
@@ -6945,12 +6968,15 @@ ig.module("game.entities.game-control")
                         cartX+=2;
                         scoreCartX+=2;
                         temp=1;
+                        showCartCoin=1;
+                        cartCoinCollectedX+=2;
                     }
                     if(temp==1 && cartMove==0){
                          cartReached=1;
                          waitCart=0;
                          tutBtn=7;
                          storageCashScore=0;
+                         showCartCoin=0;
                     }
                     if(cartX<=130){
                         cartMove=2;

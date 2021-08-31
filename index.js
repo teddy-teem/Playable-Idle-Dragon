@@ -4807,6 +4807,7 @@ ig.module("game.entities.game-control")
                                  this.drawCoinCollected(40, coinY);
                                 }
                                 boxCoin=0;
+                                console.log(cashScoreElev);
                                 cashScoreBox=80;
                                  this.drawScore2(scoreX, scoreY, cashScoreElev,"#ffffff");      
                             }
@@ -5868,7 +5869,7 @@ ig.module("game.entities.game-control")
                 tr.scale(1.3, .9);
                 this.imageMyButton.draw(0, 0),
                     tr.restore();
-                this.drawScore7(308,440, "New Mine", "#000000") 
+                this.drawScore7(308,445, "New Mine", "#000000") 
             },
             drawMyLevel1: function(x,y){
                 var tr = ig.system.context;
@@ -5877,7 +5878,7 @@ ig.module("game.entities.game-control")
                 tr.scale(.8, .6);
                 this.imageMyButton.draw(0, 0),
                     tr.restore();
-                this.drawScore6(403,435, "Level: 01", "#000000") 
+                this.drawScore6(405,430, "Level: 01", "#000000") 
             },
             drawMyLevel2: function(x,y){
                 var tr = ig.system.context;
@@ -5886,7 +5887,7 @@ ig.module("game.entities.game-control")
                 tr.scale(.8, .6);
                 this.imageMyButton.draw(0, 0),
                     tr.restore();
-                this.drawScore6(33,255, "Level: 01", "#000000") 
+                this.drawScore6(35,250, "Level: 01", "#000000") 
             },
             drawMyLevel3: function(x,y){
                 var tr = ig.system.context;
@@ -5895,14 +5896,14 @@ ig.module("game.entities.game-control")
                 tr.scale(.8, .6);
                 this.imageMyButton.draw(0, 0),
                     tr.restore();
-                this.drawScore6(403,205, "Level: 01", "#000000") 
+                this.drawScore6(405,200, "Level: 01", "#000000") 
             },
             drawScore7: function(x,y, value, color){
                 var b = ig.system.context;
                 b.save();
                 b.fillStyle = color;
                 var c = this.posTutorial.x;
-                b.font = "50px arial bold";
+                b.font = "bold 50px arial";
                 b.textAlign = "center";
                 b.translate(x, y);
                 b.scale(0.4, 0.4);
@@ -5919,7 +5920,7 @@ ig.module("game.entities.game-control")
                 b.save();
                 b.fillStyle = color;
                 var c = this.posTutorial.x;
-                b.font = "50px arial bold";
+                b.font = "  bold 50px arial";
                 b.textAlign = "center";
                 b.translate(x, y);
                 b.scale(0.4, 0.4);
@@ -5936,16 +5937,16 @@ ig.module("game.entities.game-control")
                 b.save();
                 b.fillStyle = color;
                 var c = this.posTutorial.x;
-                b.font = "35px arial bold";
+                b.font = "30px arial";
                 b.textAlign = "center";
                 b.translate(x, y);
-                b.scale(0.5, 0.4);
+                b.scale(0.5, 0.5);
                 b.lineWidth = 2;
                 b.strokeStyle = "#000000";
                 // b.strokeText("Score : ", 50, 0);
                 // b.fillText("Score : ", 50, 0);
-                b.strokeText(value, 80, 80);
-                b.fillText(value, 80,80);
+                b.strokeText(value, 70, 70);
+                b.fillText(value, 70,70);
                 b.restore();
             },
             drawScore2: function(x,y, value, color){
@@ -5953,7 +5954,7 @@ ig.module("game.entities.game-control")
                 b.save();
                 b.fillStyle = color;
                 var c = this.posTutorial.x;
-                b.font = "50px arial bold";
+                b.font = "bold 50px arial";
                 b.textAlign = "center";
                 b.translate(x, y);
                 b.scale(0.4, 0.4);
@@ -5971,7 +5972,7 @@ ig.module("game.entities.game-control")
                 b.save();
                 b.fillStyle = color;
                 var c = this.posTutorial.x;
-                b.font = "50px arial bold";
+                b.font = "bold 50px arial";
                 b.textAlign = "center";
                 b.translate(x, y);
                 b.scale(0.4, 0.4);
@@ -5988,7 +5989,7 @@ ig.module("game.entities.game-control")
                 b.save();
                 b.fillStyle = color;
                 var c = this.posTutorial.x;
-                b.font = "50px arial bold";
+                b.font = "bold 50px arial";
                 b.textAlign = "center";
                 b.translate(x, y);
                 b.scale(0.5, 0.4);
@@ -6005,7 +6006,7 @@ ig.module("game.entities.game-control")
                 b.save();
                 b.fillStyle = color;
                 var c = this.posTutorial.x;
-                b.font = "50px arial bold";
+                b.font = "bold 50px arial";
                 b.textAlign = "center";
                 b.translate(x, y);
                 b.scale(0.4, 0.4);
@@ -6902,8 +6903,9 @@ ig.module("game.entities.game-control")
                     this.detectPointer();
                     this.collision(); 
                     if(elevMove==1){  
-                        elevY+=2;
-                        elevWizY+=2;
+                        elevY+=4;
+                        elevWizY+=4;
+                        tutBtn=5;
                     }
                     if(coinY<=elevY){
                         coinY=400;    
@@ -6916,10 +6918,10 @@ ig.module("game.entities.game-control")
                     }
                     if(waitElev>=100){
                         tempElev=1;
-                        elevY-=2;
-                        elevWizY-=2;
-                        coinY-=2;
-                        scoreY-=2;
+                        elevY-=4;
+                        elevWizY-=4;
+                        coinY-=4;
+                        scoreY-=4;
                         elevReached=0; 
                     }
                     if(tempElev==1 && elevMove==0 && temp==0){
@@ -6949,7 +6951,7 @@ ig.module("game.entities.game-control")
                     }
                     if(cartMove==1){
                        tutBtn=7;
-                        cartX-=2;    
+                        cartX-=4;    
                     }
                     if(cartX<=130 && cartX>=120){
                         coinDrop=1;
@@ -6965,11 +6967,11 @@ ig.module("game.entities.game-control")
                     }
                     if(waitCart>=80){
                         cartClicked=1;
-                        cartX+=2;
-                        scoreCartX+=2;
+                        cartX+=4;
+                        scoreCartX+=4;
                         temp=1;
                         showCartCoin=1;
-                        cartCoinCollectedX+=2;
+                        cartCoinCollectedX+=4;
                     }
                     if(temp==1 && cartMove==0){
                          cartReached=1;
@@ -6994,7 +6996,7 @@ ig.module("game.entities.game-control")
                         drgnMove=1;   
                     }
                     if(drgnMove==1){
-                        drgnX-=1;
+                        drgnX-=3;
                     }
                     if(drgnX<=190){
                         cashScore=0;
@@ -7023,7 +7025,7 @@ ig.module("game.entities.game-control")
                     
                     if(drgnMove==2){
                         drgnTemp=1; 
-                        drgnX+=1;
+                        drgnX+=3;
                         if(x==0){
                             tutBtn=4;
                         }
